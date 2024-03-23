@@ -25,7 +25,7 @@ const Index = () => {
   return (
     <Container maxW="container.lg" py={8}>
       <VStack spacing={8} align="stretch">
-        <Heading as="h1" size="xl" textAlign="center" color="blue.600">
+        <Heading as="h1" size="xl" textAlign="center" color="pink.600">
           Quotation Creator
         </Heading>
         <Box bg="white" p={6} borderRadius="md" boxShadow="md">
@@ -108,10 +108,10 @@ const Index = () => {
             </Select>
           </FormControl>
           <Stack direction="row" mt={4} spacing={4}>
-            <Button leftIcon={<FaFileAlt />} colorScheme="blue">
+            <Button leftIcon={<FaFileAlt />} colorScheme="pink">
               Export
             </Button>
-            <Button leftIcon={<FaEnvelope />} colorScheme="blue">
+            <Button leftIcon={<FaEnvelope />} colorScheme="pink">
               Send Email
             </Button>
           </Stack>
