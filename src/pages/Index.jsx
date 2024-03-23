@@ -30,21 +30,49 @@ const Index = () => {
         </Heading>
         <Box bg="white" p={6} borderRadius="md" boxShadow="md">
           <Stack spacing={4}>
-            <FormControl>
-              <FormLabel>Product/Service Name</FormLabel>
-              <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter product or service name" />
-            </FormControl>
-            <FormControl>
-              <FormLabel>Quantity</FormLabel>
-              <Input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} placeholder="Enter quantity" />
-            </FormControl>
-            <FormControl>
-              <FormLabel>Price</FormLabel>
-              <Input type="number" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Enter price" />
-            </FormControl>
-            <Button colorScheme="blue" onClick={addItem}>
-              Add Item
-            </Button>
+            {[...Array(2)].map((_, i) => (
+              <React.Fragment key={i}>
+                <FormControl>
+                  <FormLabel>Product/Service Name {i + 1}</FormLabel>
+                  <Input
+                    value={items[i]?.name || ""}
+                    onChange={(e) => {
+                      const newItems = [...items];
+                      newItems[i] = { ...newItems[i], name: e.target.value };
+                      setItems(newItems);
+                    }}
+                    placeholder="Enter product or service name"
+                  />
+                </FormControl>
+                <FormControl>
+                  <FormLabel>Quantity {i + 1}</FormLabel>
+                  <Input
+                    type="number"
+                    value={items[i]?.quantity || ""}
+                    onChange={(e) => {
+                      const newItems = [...items];
+                      newItems[i] = { ...newItems[i], quantity: e.target.value };
+                      setItems(newItems);
+                    }}
+                    placeholder="Enter quantity"
+                  />
+                </FormControl>
+                <FormControl>
+                  <FormLabel>Price {i + 1}</FormLabel>
+                  <Input
+                    type="number"
+                    value={items[i]?.price || ""}
+                    onChange={(e) => {
+                      const newItems = [...items];
+                      newItems[i] = { ...newItems[i], price: e.target.value };
+                      setItems(newItems);
+                    }}
+                    placeholder="Enter price"
+                  />
+                </FormControl>
+              </React.Fragment>
+            ))}
+            <Text fontWeight="bold">Total: ${calculateTotal()}</Text>
           </Stack>
         </Box>
         <Box bg="white" p={6} borderRadius="md" boxShadow="md">
